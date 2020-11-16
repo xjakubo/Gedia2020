@@ -1,8 +1,12 @@
+<?php
+session_start();
+?>
 <html>
 <head>
   <link rel = 'stylesheet' href = 'styles/loginstyle.css'>
 </head>
 <body>
+  <?php if (empty($_SESSION['user'])) : ?>
 <div class='loginform'>
 <form action = '/login.php' method = 'post'>
 <fieldset>
@@ -21,11 +25,10 @@
 </fieldset>
 </form>
 </div>
-<?php
-
-
-
-?>
+  <?php else : ?>
+    <p>Zalogowano</p>
+    <button><a href = 'logout.php'>Wyloguj sie</a></button>
+  <?php endif; ?>
 </body>
 
 
