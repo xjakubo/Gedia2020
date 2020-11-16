@@ -13,9 +13,9 @@
   <label><input type = 'radio' name = 'acctype' value = 'master'>Kierownik</label>
   <label><input type = 'radio' name = 'acctype' value = 'worker'>Pracownik</label>
   <br>
-  Login: <input type = 'text' name = 'login'></input>
+  Login: <input type = 'text' id = 'login'></input>
   <br>
-  Haslo: <input type = 'password' name = 'passwrd'></input>
+  Haslo: <input type = 'password' id = 'passwrd'></input>
   <br>
   <center><button type='submit'>Zaloguj</button></center>
 </fieldset>
