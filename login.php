@@ -3,6 +3,8 @@
 </head>
 <body>
 <?php
+$login = 'login';
+$haslo = 'test123';
 if (!empty($_POST['login']) && !empty($_POST['passwrd']))
 {
   echo var_dump($_POST);
