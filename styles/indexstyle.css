@@ -1,0 +1,35 @@
+div.loginform{
+  height: 200px;
+  position: relative;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+div.topbar{
+  position: relative;
+}
+
+p.credentials{
+  position: relative;
+  top: 0px;
+}
+
+button.panelbtn{
+  position: absolute;
+  top: 0px;
+  right:130px;
+  background-color: #e7e7e7;
+  width: 120px;
+  color: black;
+}
+
+button.logoutbtn{
+  position: absolute;
+  top: 0px;
+  width: 100px;
+  right: 10px;
+  background-color: #e7e7e7;
+  color: black;
+}

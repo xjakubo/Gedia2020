@@ -3,31 +3,38 @@ session_start();
 ?>
 <html>
 <head>
-  <link rel = 'stylesheet' href = 'styles/loginstyle.css'>
+  <link rel = 'stylesheet' href = 'styles/indexstyle.css'>
 </head>
 <body>
-  <?php if (empty($_SESSION['user'])) : ?>
-<div class='loginform'>
-<form action = '/login.php' method = 'post'>
-<fieldset>
-  <img src = 'img/Gedia-logo.png'></img>
-  <br>
-  <label> Zaloguj jako: </label>
-  <br>
-  <label><input type = 'radio' name = 'acctype' value = 'master'>Kierownik</label>
-  <label><input type = 'radio' name = 'acctype' value = 'worker'>Pracownik</label>
-  <br>
-  Login: <input type = 'text' name = 'login'></input>
-  <br>
-  Haslo: <input type = 'password' name = 'passwrd'></input>
-  <br>
-  <center><button type='submit'>Zaloguj</button></center>
-</fieldset>
-</form>
-</div>
+  <?php if (!empty($_SESSION['user'])) : ?>
+    <div class = 'topbar'>
+    <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Rodzaj konta: <?=$_SESSION['account']?></p>
+    <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
+    <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
+    </div>
+    <hr>
+    <iframe name = 'UsableSpace' width="100%" height="90%" style="border:1px solid black;">
+    </iframe>
   <?php else : ?>
-    <p>Zalogowano</p>
-    <button><a href = 'logout.php'>Wyloguj sie</a></button>
+    <div class='loginform'>
+    <form action = '/login.php' method = 'post'>
+    <fieldset>
+      <img src = 'img/Gedia-logo.png'></img>
+      <br>
+      <label> Zaloguj jako: </label>
+      <br>
+      <label><input type = 'radio' name = 'acctype' value = 'master'>Kierownik</label>
+      <label><input type = 'radio' name = 'acctype' value = 'worker'>Pracownik</label>
+      <br>
+      Login: <input type = 'text' name = 'login'></input>
+      <br>
+      Haslo: <input type = 'password' name = 'passwrd'></input>
+      <br>
+      <center><button type='submit'>Zaloguj</button></center>
+    </fieldset>
+    </form>
+    </div>
+
   <?php endif; ?>
 </body>
 
