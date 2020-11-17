@@ -3,18 +3,26 @@
 	<meta charset='utf=8' />
 	<title>Karta obiegowa</title>
 	<link rel="stylesheet" href="styles\workerpanelCSS.css">
-</head>
-<body>
-	<br />
+</head>	
+<body bgcolor="teal">
+<br />
+
+<!--
+	Co jest do załatwienia:
+	- wyświetlanie imienia, nazwiska, numeru i daty zwolnienia pracownika na górze strony, w <fieldset>
+	- wyświetlanie dat, podpisów i uwag w każdym z działów
+	- good luck m8
+
+-->
+
 	<center>
 	
-	
-	<fieldset style="width: 967; border: solid black">
+	<fieldset style="width: 967; border: solid black; background-color: white">
 	
 		<form method="post" action="XXXXXXXX.php">
 		
 		<br />
-		<table>
+		<table style="border-collapse: collapse;">
 			<tr>
 				<td width=700><h1>Karta obiegowa</h1></td>
 				<td><img src="img\logo.jpg" width=150 height=125/></td>
@@ -34,7 +42,7 @@
 		
 		
 		<table cellspacing=0 cellpadding=3>
-		<tr>
+		<tr style="text-align: center; border: 1px solid black; border-collapse: collapse">
 			<th>Dział</th>
 			<th>Data</th>
 			<th align="center">Podpis osoby rozliczającej<br />kartę obiegową</th>
@@ -45,7 +53,7 @@
 			<td>
 			<b>Dział Produkcji</b>
 				<ul>
-				<li>Odbiór kłodki lockout, narzędzi</li>
+				<li>Odbiór kłódki lockout, narzędzi</li>
 				<li>Odbiór kluczy od szafek przynależących do działu inne</li>
 				<li>Inne</li>
 				</ul>
@@ -187,14 +195,26 @@
 		</table>
 		</form>
 	
+	<table>
+		<tr>  <!-- Miejsce na fizyczny podpis nr 1 -->
+			<td style="border: 1px solid white" width=600>Data, podpis Pracownika</td>
+			<td style="border: 1px solid white">Data, podpis Pracownika Działu Kadr</td>
+		</tr>
+		<tr>  <!-- Najlepiej... najlepiej o tym nie mówmy -->
+			<td style="border: 1px solid white"> </td>
+			<td style="border: 1px solid white" align="center"> </td>
+		</tr>
+		<tr>  <!-- Miejsce na fizyczny podpis nr 2 -->
+			<td style="border: 1px solid white">____________________</td>
+			<td style="border: 1px solid white" align="center">____________________</td>
+		</tr>
+	</table>
+	
 	Rev.: 07.07.2015 PL<br />
 	Strona 1 z 1
 	</fieldset>
-	
-	
+
 	</center>
-
-
 
 </body>
 </html>
