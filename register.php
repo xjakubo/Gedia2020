@@ -1,16 +1,28 @@
 <?php include('db/config.php');
 
 
-if($_GET['newuser'] == 'register' and $_POST['acctype'] == 'worker'){
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-  $firstname = $_POST['name'];
-  $surname = $_POST['surname'];
+  if($_GET['newuser'] == 'register' and $_POST['acctype'] == 'worker'){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $firstname = $_POST['name'];
+    $surname = $_POST['surname'];
 
-  mysqli_query($connection, "INSERT INTO workers (username, password, name, surname)
-  VALUES('$username','$password','$firstname','$surname')");
+    mysqli_query($connection, "INSERT INTO workers (username, password, name, surname)
+    VALUES('$username','$password','$firstname','$surname')");
 
-}
+  }
+  if($_GET['newuser'] == 'register' and $_POST['acctype'] == 'master'){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $firstname = $_POST['name'];
+    $surname = $_POST['surname'];
+    $masterid = $_POST['masterid'];
+    echo $masterid;
+
+    mysqli_query($connection, "INSERT INTO masters (username, password, name, surname, masterid)
+    VALUES('$username','$password','$firstname','$surname','$masterid')");
+
+  }
 ?>
 <html>
 <head>
