@@ -1,5 +1,24 @@
 
 <?php
+session_start();
+include('db/config.php');
+if (!empty($_POST['login']) && !empty($_POST['passwrd']))
+{
+    $login = $_POST['login'];
+    $password = $_POST['passwrd'];
+    $dbcall = mysqli_query($connection, "SELECT * FROM workers WHERE `username` = '$login' AND `password` = '$password'");
+    $result = mysqli_num_rows($dbcall);
+    if ($result == 0){
+      echo 'zly login lub haslo!';
+      header("Location: index.php");
+      die();
+    }
+    $_SESSION['user'] = $_POST['login'];
+    $_SESSION['account'] = $_POST['acctype'];
+    header("Location: index.php");
+}
+
+/*
 $login = 'login';
 $haslo = 'test123';
 
@@ -21,4 +40,5 @@ if (!empty($_POST['login']) && !empty($_POST['passwrd']) && !empty($_POST['accty
   }
 }
 header('Location: index.php');
+*/
 ?>
