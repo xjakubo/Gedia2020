@@ -16,7 +16,7 @@ session_start();
     <?php endif; ?>
     <?php if($_SESSION['account'] == "master") : ?>
       <div class = 'topbar'>
-      <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Stanowisko: <?=$_SESSION['mastertype']?></p>
+      <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Stanowisko: <?=$_SESSION['mastername']?></p>
       <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
       <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
       </div>
