@@ -9,6 +9,9 @@ session_start();
   <?php if (!empty($_SESSION['user'])) : ?>
     <div class = 'topbar'>
     <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Rodzaj konta: <?=$_SESSION['account']?></p>
+    <?php if($_SESSION['account'] == "master") : ?>
+    Stanowisko: <?=$_SESSION['mastertype']?>
+  <?php endif; ?>
     <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
     <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
     </div>
