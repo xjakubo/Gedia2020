@@ -41,6 +41,30 @@ if (!empty($_POST['login']) && !empty($_POST['passwrd']) && !empty($_POST['accty
     case 2:
       $_SESSION['mastername'] = 'Dział Logistyki';
       break;
+	case 3:
+      $_SESSION['mastername'] = 'Dział Jakości';
+      break;
+	case 4:
+      $_SESSION['mastername'] = 'BHP';
+      break;
+	case 5:
+      $_SESSION['mastername'] = 'Dział Księgowości';
+      break;
+	case 6:
+      $_SESSION['mastername'] = 'Dział Utrzymania Ruchu';
+      break;
+	case 7:
+      $_SESSION['mastername'] = 'Biuro Zarządu';
+      break;
+	case 8:
+      $_SESSION['mastername'] = 'Dział Informatyki IT';
+      break;
+	case 9:
+      $_SESSION['mastername'] = 'Dział Kadr';
+      break;
+	case 10:
+      $_SESSION['mastername'] = 'Dział Zakupów';
+      break;
   }
   header("Location: index.php");
   }
