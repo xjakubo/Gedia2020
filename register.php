@@ -14,6 +14,7 @@ if($_GET['newuser'] == 'register' and $_POST['acctype'] == 'worker'){
 ?>
 <html>
 <head>
+  <title>Rejestracja</title>
   <link rel="stylesheet" href = 'styles/registerstyle.css'>
 </head>
 <body>
@@ -33,6 +34,23 @@ Imie: <input type = 'text' name = 'name'></input>
 <br>
 Nazwisko: <input type = 'text' name = 'surname'></input>
 <br>
+
+
+Rodzaj uprawnienia:
+<select name="masterid">
+	<option selected value="0"></option> <!--Domyślna opcja zerowa, jeśli zaznaczyłeś przy rejestracji kierownik i wybierzesz tę opcję - error-->
+	<option value="1">Dział Produkcji</option>
+	<option value="2">Dział Logistyki</option>
+	<option value="3">Dział Jakości</option>
+	<option value="4">BHP</option>
+	<option value="5">Dział Księgowości</option>
+	<option value="6">Dział Utrzymania Ruchu</option>
+	<option value="7">Biuro Zarządu</option>
+	<option value="8">Dział Informatyki IT</option>
+	<option value="9">Dział Kadr</option>
+	<option value="10">Dział Zakupów</option>
+	<option value="11">Administrator</option>
+</select>
 
 </fieldset>
 
