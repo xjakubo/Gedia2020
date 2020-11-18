@@ -7,14 +7,21 @@ session_start();
 </head>
 <body>
   <?php if (!empty($_SESSION['user'])) : ?>
-    <div class = 'topbar'>
-    <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Rodzaj konta: <?=$_SESSION['account']?></p>
+    <?php if($_SESSION['account'] == "worker") : ?>
+      <div class = 'topbar'>
+      <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Rodzaj konta: <?=$_SESSION['account']?></p>
+      <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
+      <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
+      </div>
+    <?php endif; ?>
     <?php if($_SESSION['account'] == "master") : ?>
-    Stanowisko: <?=$_SESSION['mastertype']?>
+      <div class = 'topbar'>
+      <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Stanowisko: <?=$_SESSION['mastertype']?></p>
+      <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
+      <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
+      </div>
+
   <?php endif; ?>
-    <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
-    <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
-    </div>
     <hr>
     <iframe name = 'UsableSpace' width="100%" height="90%" style="border:1px solid black;">
     </iframe>

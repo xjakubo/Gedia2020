@@ -34,6 +34,14 @@ if (!empty($_POST['login']) && !empty($_POST['passwrd']) && !empty($_POST['accty
   $_SESSION['user'] = $_POST['login'];
   $_SESSION['account'] = $_POST['acctype'];
   $_SESSION['mastertype'] = $mastertype;
+  switch($mastertype){
+    case 1:
+      $_SESSION['mastername'] = 'Dział Produkcji';
+      break;
+    case 2:
+      $_SESSION['mastername'] = 'Dział Logistyki';
+      break;
+  }
   header("Location: index.php");
   }
 }
