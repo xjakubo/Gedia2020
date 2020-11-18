@@ -1,7 +1,7 @@
 <?php include('db/config.php');
 
 
-if($_GET['newuser'] == 'register'){
+if($_GET['newuser'] == 'register' and $_POST['acctype'] == 'worker'){
   $username = $_POST['username'];
   $password = $_POST['password'];
   $firstname = $_POST['name'];
@@ -20,6 +20,11 @@ if($_GET['newuser'] == 'register'){
   <div class = 'registerform'>
 <fieldset>
 <form method = "post" action= 'register.php?newuser=register'>
+Zarejestruj jako:
+<br>
+Kierownik: <input type="radio" name='acctype' value = "master"></input>
+Pracownik: <input type="radio" name='acctype' value = "worker"></input>
+<br>
 Login: <input type = 'text' name='username'></input>
 <br>
 Password: <input type = 'password' name='password'></input>
