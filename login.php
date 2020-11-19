@@ -18,23 +18,22 @@ if (!empty($_POST['login']) && !empty($_POST['passwrd']) && !empty($_POST['accty
     }
     $_SESSION['user'] = $_POST['login'];
     $_SESSION['account'] = $_POST['acctype'];
-    header("Location: index.php");
+  //  header("Location: index.php");
   }
   if($acctype == "master")
   {
   $dbcall = mysqli_query($connection, "SELECT * FROM masters WHERE `username` = '$login' AND `password` = '$password'");
-  $mastertype = mysqli_fetch_array($dbcall)['masterid'];
-  echo $mastertype;
+  $rowarray = mysqli_fetch_array($dbcall);
   $result = mysqli_num_rows($dbcall);
-  if ($result == 0){
-    echo 'zly login lub haslo!';
-    header("Location: index.php");
-    die();
-  }
-  $_SESSION['user'] = $_POST['login'];
-  $_SESSION['account'] = $_POST['acctype'];
-  $_SESSION['mastertype'] = $mastertype;
-  switch($mastertype){
+    if ($result == 0){
+      echo 'zly login lub haslo!';
+      header("Location: index.php");
+      die();
+      }
+  $_SESSION['user'] = $rowarray['name'];
+  $_SESSION['mastertype'] = $rowarray['masterid'];
+  $_SESSION['account'] = $acctype;
+  switch($rowarray['masterid']){
     case 1:
       $_SESSION['mastername'] = 'Dział Produkcji';
       break;
@@ -66,7 +65,7 @@ if (!empty($_POST['login']) && !empty($_POST['passwrd']) && !empty($_POST['accty
       $_SESSION['mastername'] = 'Dział Zakupów';
       break;
   }
-  header("Location: index.php");
+//  header("Location: index.php");
   }
 }
 

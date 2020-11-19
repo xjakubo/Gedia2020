@@ -3,7 +3,7 @@
 	<meta charset='utf=8' />
 	<title>Karta obiegowa</title>
 	<link rel="stylesheet" href="styles\workerpanelCSS.css">
-</head>	
+</head>
 <body bgcolor="teal">
 <br />
 
@@ -16,11 +16,12 @@
 -->
 
 	<center>
-	
-	<fieldset style="width: 967; border: solid black; background-color: white">
-	
-		<form method="post" action="XXXXXXXX.php">
 		
+
+	<fieldset style="width: 967; border: solid black; background-color: white">
+
+		<form method="post" action="XXXXXXXX.php">
+
 		<br />
 		<table style="border-collapse: collapse;">
 			<tr>
@@ -29,7 +30,7 @@
 			</tr>
 		</table>
 		<br />
-		
+
 		<fieldset style="width: 270" align="left">
 			<b>
 				Nazwisko: <br /><!-- Tutaj będą pojawiały się wyciągnięte dane z SQL -->
@@ -39,8 +40,8 @@
 			</b>
 		</fieldset>
 		<br />
-		
-		
+
+
 		<table cellspacing=0 cellpadding=3>
 		<tr style="text-align: center; border: 1px solid black; border-collapse: collapse">
 			<th>Dział</th>
@@ -48,7 +49,7 @@
 			<th align="center">Podpis osoby rozliczającej<br />kartę obiegową</th>
 			<th>Uwagi</th>
 		</tr>
-		
+
 		<tr><!--DZIAŁ-PRODUKCJI-->
 			<td>
 			<b>Dział Produkcji</b>
@@ -62,7 +63,7 @@
 			<td><input type="text" name="POD-produkcja" /></td>
 			<td><textarea rows=7 cols=21 name="UWG-produkcja"></textarea></td>
 		</tr>
-		
+
 		<tr><!--DZIAŁ-LOGISTYKI-->
 			<td>
 				<b>Dział Logistyki</b>
@@ -76,7 +77,7 @@
 			<td><input type="text" name="POD-logistyka" /></td>
 			<td><textarea rows=7 cols=21 name="UWG-logistyka"></textarea></td>
 		</tr>
-		
+
 		<tr><!--DZIAŁ-JAKOŚCI-->
 			<td>
 				<b>Dział Jakości</b>
@@ -90,7 +91,7 @@
 			<td><input type="text" name="POD-jakosc" /></td>
 			<td><textarea rows=7 cols=21 name="UWG-jakosc"></textarea></td>
 		</tr>
-		
+
 		<tr><!--BHP-->
 			<td>
 				<b>BHP</b>
@@ -103,7 +104,7 @@
 			<td><input type="text" name="POD-bhp" /></td>
 			<td><textarea rows=6 cols=21 name="UWG-bhp"></textarea></td>
 		</tr>
-		
+
 		<tr><!--DZIAŁ-KSIĘGOWOŚCI-->
 			<td>
 				<b>Dział Księgowości</b>
@@ -118,7 +119,7 @@
 			<td><input type="text" name="POD-ksiegowosc" /></td>
 			<td><textarea rows=8 cols=21 name="UWG-ksiegowosc"></textarea></td>
 		</tr>
-		
+
 		<tr><!--DZIAŁ-UTRZYMANIA-RUCHU-->
 			<td>
 				<b>Dział Utrzymania Ruchu</b>
@@ -132,7 +133,7 @@
 			<td><input type="text" name="POD-utrzymanie" /></td>
 			<td><textarea rows=7 cols=21 name="UWG-utrzymanie"></textarea></td>
 		</tr>
-		
+
 		<tr><!--BIURO-ZARZĄDU-->
 			<td>
 				<b>Biuro Zarządu</b>
@@ -147,7 +148,7 @@
 			<td><input type="text" name="POD-zarzad" /></td>
 			<td><textarea rows=8 cols=21 name="UWG-zarzad"></textarea></td>
 		</tr>
-		
+
 		<tr><!--DZIAŁ-INFORMATYKI-IT-->
 			<td>
 				<b>Dział Informatyki IT</b>
@@ -164,7 +165,7 @@
 			<td><input type="text" name="POD-informatyka" /></td>
 			<td><textarea rows=10 cols=21 name="UWG-informatyka"></textarea></td>
 		</tr>
-		
+
 		<tr><!--DZIAŁ-KADR-->
 			<td>
 				<b>Dział Kadr</b>
@@ -179,7 +180,7 @@
 			<td><input type="text" name="POD-kadry" /></td>
 			<td><textarea rows=8 cols=21 name="UWG-kadry"></textarea></td>
 		</tr>
-		
+
 		<tr><!--DZIAŁ-ZAKUPÓW-->
 			<td>
 				<b>Dział Zakupów</b>
@@ -194,7 +195,7 @@
 		</tr>
 		</table>
 		</form>
-	
+
 	<table>
 		<tr>  <!-- Miejsce na fizyczny podpis nr 1 -->
 			<td style="border: 1px solid white" width=600>Data, podpis Pracownika</td>
@@ -209,7 +210,7 @@
 			<td style="border: 1px solid white" align="center">____________________</td>
 		</tr>
 	</table>
-	
+
 	Rev.: 07.07.2015 PL<br />
 	Strona 1 z 1
 	</fieldset>
