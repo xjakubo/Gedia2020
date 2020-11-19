@@ -19,7 +19,7 @@ session_start();
       <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Stanowisko: <?=$_SESSION['mastername']?></p>
       <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
       <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
-      </div>
+    </div>
 
   <?php endif; ?>
     <hr>
