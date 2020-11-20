@@ -9,7 +9,7 @@ session_start();
   <?php if (!empty($_SESSION['user'])) : ?>
     <?php if($_SESSION['account'] == "worker") : ?>
       <div class = 'topbar'>
-      <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Rodzaj konta: <?=$_SESSION['account']?></p>
+      <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> </p>
       <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
       <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
       </div>

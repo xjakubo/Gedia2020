@@ -18,7 +18,7 @@ if (!empty($_POST['login']) && !empty($_POST['passwrd']) && !empty($_POST['accty
     }
     $_SESSION['user'] = $_POST['login'];
     $_SESSION['account'] = $_POST['acctype'];
-  //  header("Location: index.php");
+  header("Location: index.php");
   }
   if($acctype == "master")
   {
@@ -65,7 +65,7 @@ if (!empty($_POST['login']) && !empty($_POST['passwrd']) && !empty($_POST['accty
       $_SESSION['mastername'] = 'Dział Zakupów';
       break;
   }
-//  header("Location: index.php");
+    header("Location: index.php");
   }
 }
 
