@@ -54,7 +54,6 @@ session_start();
 				
 				$mastername = $_SESSION['mastername']; 
 				$dbcall = mysqli_query($connection, "SELECT workerid, `$mastername` from cards WHERE `$mastername` = 0");
-				
 				$result = mysqli_num_rows($dbcall);
 				
 				$ile = $result;
