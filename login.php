@@ -10,13 +10,17 @@ if (!empty($_POST['login']) && !empty($_POST['passwrd']) && !empty($_POST['accty
     if($acctype == "worker")
     {
     $dbcall = mysqli_query($connection, "SELECT * FROM workers WHERE `username` = '$login' AND `password` = '$password'");
+    $rowarray = mysqli_fetch_array($dbcall);
     $result = mysqli_num_rows($dbcall);
     if ($result == 0){
       echo 'zly login lub haslo!';
       header("Location: index.php");
       die();
     }
-    $_SESSION['user'] = $_POST['login'];
+    $_SESSION['user'] = $rowarray['username'];
+    $_SESSION['gediaid'] = $rowarray['gediaid'];
+    $_SESSION['firstname'] = $rowarray['name'];
+    $_SESSION['surname'] = $rowarray['surname'];
     $_SESSION['account'] = $_POST['acctype'];
   header("Location: index.php");
   }
