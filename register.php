@@ -6,9 +6,15 @@
     $password = $_POST['password'];
     $firstname = $_POST['name'];
     $surname = $_POST['surname'];
+    $gediaid = $_POST['gediaid'];
+    $date = date('Y-m-d');
+    mysqli_query($connection, "INSERT INTO workers (username, password, name, surname, gediaid, retirementday)
+    VALUES('$username','$password','$firstname','$surname','$gediaid','$date')")
+    or die(mysqli_error($connection));
+    mysqli_query($connection, "INSERT INTO cards (workerid)
+    VALUES('$gediaid')")
+    or die(mysqli_error($connection));
 
-    mysqli_query($connection, "INSERT INTO workers (username, password, name, surname)
-    VALUES('$username','$password','$firstname','$surname')");
 
   }
   if($_GET['newuser'] == 'register' and $_POST['acctype'] == 'master'){
@@ -17,7 +23,6 @@
     $firstname = $_POST['name'];
     $surname = $_POST['surname'];
     $masterid = $_POST['masterid'];
-    echo $masterid;
 
     mysqli_query($connection, "INSERT INTO masters (username, password, name, surname, masterid)
     VALUES('$username','$password','$firstname','$surname','$masterid')");
@@ -28,6 +33,18 @@
 <head>
   <title>Rejestracja</title>
   <link rel="stylesheet" href = 'styles/registerstyle.css'>
+  <script type = 'text/javascript'>
+    function showmasterwindow()
+    {
+    var x = document.getElementsByName('masterid');
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+    }
+
+  </script>
 </head>
 <body>
   <div class = 'registerform'>
@@ -36,7 +53,7 @@
 Zarejestruj jako:
 <br>
 Kierownik: <input type="radio" name='acctype' value = "master"></input>
-Pracownik: <input type="radio" name='acctype' value = "worker"></input>
+Pracownik: <input type="radio" onclick='showmasterwindow()'name='acctype' value = "worker"></input>
 <br>
 Login: <input type = 'text' name='username'></input>
 <br>
@@ -45,6 +62,8 @@ Password: <input type = 'password' name='password'></input>
 Imie: <input type = 'text' name = 'name'></input>
 <br>
 Nazwisko: <input type = 'text' name = 'surname'></input>
+<br>
+Numer pracownika: <input type = 'text' name = 'gediaid'></input>
 <br>
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 20 Lis 2020, 10:06
+-- Czas generowania: 23 Lis 2020, 12:01
 -- Wersja serwera: 10.4.14-MariaDB
 -- Wersja PHP: 7.2.33
 
@@ -30,19 +30,29 @@ SET time_zone = "+00:00";
 CREATE TABLE `cards` (
   `id` int(255) NOT NULL,
   `workerid` int(255) NOT NULL,
-  `Dział Produkcji` tinyint(1) NOT NULL,
-  `Dział Logistyki` tinyint(1) NOT NULL,
-  `Dział jakości` tinyint(1) NOT NULL,
-  `BHP` tinyint(1) NOT NULL,
-  `Dział Księgowości` tinyint(1) NOT NULL,
-  `Dział Utrzymania Ruchu` tinyint(1) NOT NULL,
-  `Biuro Zarządu` tinyint(1) NOT NULL,
-  `Dział Informatyki IT` tinyint(1) NOT NULL,
-  `Dział Kadr` tinyint(1) NOT NULL,
-  `Dział Zakupów` tinyint(1) NOT NULL,
-  `Notes` varchar(128) NOT NULL,
-  `isDone` tinyint(1) NOT NULL
+  `Dział Produkcji` tinyint(1) NOT NULL DEFAULT 0,
+  `Dział Logistyki` tinyint(1) NOT NULL DEFAULT 0,
+  `Dział Jakości` tinyint(1) NOT NULL DEFAULT 0,
+  `BHP` tinyint(1) NOT NULL DEFAULT 0,
+  `Dział Księgowości` tinyint(1) NOT NULL DEFAULT 0,
+  `Dział Utrzymania Ruchu` tinyint(1) NOT NULL DEFAULT 0,
+  `Biuro Zarządu` tinyint(1) NOT NULL DEFAULT 0,
+  `Dział Informatyki IT` tinyint(1) NOT NULL DEFAULT 0,
+  `Dział Kadr` tinyint(1) NOT NULL DEFAULT 0,
+  `Dział Zakupów` tinyint(1) NOT NULL DEFAULT 0,
+  `Notes` varchar(128) DEFAULT NULL,
+  `isDone` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `cards`
+--
+
+INSERT INTO `cards` (`id`, `workerid`, `Dział Produkcji`, `Dział Logistyki`, `Dział Jakości`, `BHP`, `Dział Księgowości`, `Dział Utrzymania Ruchu`, `Biuro Zarządu`, `Dział Informatyki IT`, `Dział Kadr`, `Dział Zakupów`, `Notes`, `isDone`) VALUES
+(1, 23, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, '', 0),
+(2, 24, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, '', 0),
+(3, 2137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0),
+(4, 6969, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -82,7 +92,7 @@ CREATE TABLE `workers` (
   `surname` varchar(32) NOT NULL,
   `gediaid` int(11) NOT NULL,
   `retirementday` date NOT NULL,
-  `isdone` tinyint(1) DEFAULT NULL
+  `isdone` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -90,14 +100,17 @@ CREATE TABLE `workers` (
 --
 
 INSERT INTO `workers` (`id`, `username`, `password`, `name`, `surname`, `gediaid`, `retirementday`, `isdone`) VALUES
-(1, 'jacek', 'packa', 'jan', 'kowalski', 0, '0000-00-00', 0),
+(1, 'jacek', 'packa', 'jan', 'kowalski', 0, '2017-12-13', 0),
 (2, 'ania', 'bania', 'Anna', 'Mucha', 0, '0000-00-00', 0),
-(9, 'bnvcxbcx', 'xvcb', 'xcvbdrsf', 'sdfsdf', 0, '0000-00-00', NULL),
-(10, 'asda', 'sdasda', 'sdas', 'dasdasdasdasda', 0, '0000-00-00', NULL),
-(11, 'asdzxc', 'czxc', 'zxczxc', 'zxczxc', 0, '0000-00-00', NULL),
-(12, 'asdzxc', 'czxc', 'zxczxc', 'zxczxc', 0, '0000-00-00', NULL),
-(13, 'jakub', 'test123', 'jakub', 'ostrowski', 0, '0000-00-00', NULL),
-(14, 'jeremiasz', 'mazurkiewicz', 'jeremiasz', 'mazurkiewicz', 0, '0000-00-00', NULL);
+(9, 'bnvcxbcx', 'xvcb', 'xcvbdrsf', 'sdfsdf', 0, '0000-00-00', 0),
+(10, 'asda', 'sdasda', 'sdas', 'dasdasdasdasda', 0, '0000-00-00', 0),
+(11, 'asdzxc', 'czxc', 'zxczxc', 'zxczxc', 0, '0000-00-00', 0),
+(12, 'asdzxc', 'czxc', 'zxczxc', 'zxczxc', 0, '0000-00-00', 0),
+(13, 'jakub', 'test123', 'jakub', 'ostrowski', 0, '0000-00-00', 0),
+(14, 'jeremiasz', 'mazurkiewicz', 'jeremiasz', 'mazurkiewicz', 0, '0000-00-00', 0),
+(15, 'jestem', 'jerem', 'kytas', 'jebany', 23, '2020-11-23', 0),
+(17, 'wladimirxpompa', 'jebacdisa123', 'Jerremiasz', 'skurwysynmazurkiewicz', 2137, '2020-11-23', 0),
+(18, 'jetemok', 'kochamciekamil123', 'Kamil', 'Miczynski', 6969, '2020-11-23', 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -129,7 +142,7 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT dla tabeli `cards`
 --
 ALTER TABLE `cards`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `masters`
@@ -141,7 +154,7 @@ ALTER TABLE `masters`
 -- AUTO_INCREMENT dla tabeli `workers`
 --
 ALTER TABLE `workers`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
