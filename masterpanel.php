@@ -52,23 +52,50 @@ session_start();
 			<?php
 				error_reporting(0);
 				
-				$mastername = $_SESSION["mastername"]; 
-				$dbcall = mysqli_query($connection, ""/*ZAPYTANIE O WORKERID, GDZIE MASTERNAME = 0, ISDONE NIE MA TU NIC DO RZECZY*/);
-				//WORKERID BĘDZIE POTEM POWIĄZANE Z WORKERID W TABELI WORKERS, PRZEZ CO BĘDZIE MOŻNA WYCIĄGNĄĆ DANE PRACOWNIKA I JE WYŚWIETLIĆ NA LIŚCIE
+				$mastername = $_SESSION['mastername']; 
+				$dbcall = mysqli_query($connection, "SELECT workerid, `$mastername` from cards WHERE `$mastername` = 0");
+				
 				$result = mysqli_num_rows($dbcall);
+				
 				$ile = $result;
+
+				$TABCARDS[$ile][2];
+				$TABWORKER[$ile][4];
 				
-				$ubertablica[$result][2];
-				
-				for($i=0; $i<$result; $i++)
+				for($i=0; $i<$ile; $i++)
 				{
 					$rowarray = mysqli_fetch_array($dbcall);
 					for($j=0; $j<2; $j++)
 					{
-						$ubertablica[$i][$j] = $rowarray[$j];
+						$TABCARDS[$i][$j] = $rowarray[$j];
 					}
 				}
-				//echo $ubertablica[3][1]."<br />"; ROBOCZE WYŚWIETLENIE TEGO CO WPADŁO DO UBERTABLICY
+				
+				for($i=0; $i<$ile; $i++)
+				{
+					$ok = $TABCARDS[$i][0];
+					$dbcall2 = mysqli_query($connection, "SELECT gediaid, name, surname, retirementday from workers WHERE gediaid = $ok");
+					$rowarray = mysqli_fetch_array($dbcall2);
+					for($j=0; $j<4; $j++)
+					{
+						$TABWORKER[$i][$j] = $rowarray[$j];
+					}
+				}
+				
+				/*
+				WARTOŚCI W TABLICACH OD TERAZ:
+				
+				TABCARDS:
+				[0]: WORKERID
+				[1]: CZY ROZLICZONO Z DZIAŁEM (0-1)
+				
+				TABWORKER:
+				[0]: GEDIAID
+				[1]: IMIE
+				[2]: NAZWISKO
+				[3]: DATA ZWOLNIENIA
+				*/
+				
 				
 				echo "<font size=5>";
 					echo "<b>";
@@ -78,15 +105,6 @@ session_start();
 				echo "</br>";
 				echo "</br>";
 				
-				//PRZYKŁADOWE ZMIENNE, W REALU BĘDĄ TO
-				//RZECZYWISTE, WYCIĄGNIĘTE Z TABELI DANE
-				////////////////////////////////////
-				$IMIE = "Jan";                    //
-				$NAZWISKO = "Kowalski";           //
-				$NR_PRACOWNIKA = "19";            //
-				$DATA_ZWOLNIENIA = "01/01/2020";  //
-				////////////////////////////////////
-				
 				
 				echo "<form method='post' action='masterpanel.php'>";
 					echo "<div id='requestslist'>";
@@ -95,8 +113,8 @@ session_start();
 								for($i=0; $i<$ile; $i++)
 								{
 									echo "<fieldset style='width: 350'>";
-									echo "<legend>$NAZWISKO $IMIE</legend>";
-										echo "Numer: $NR_PRACOWNIKA, zwolniony(a): $DATA_ZWOLNIENIA";
+									echo "<legend>".$TABWORKER[$i][1]." ".$TABWORKER[$i][2]."</legend>";
+										echo "Numer: ".$TABWORKER[$i][0].", zwolniony(a): ".$TABWORKER[$i][3];
 										
 										echo "<div style='float: right'>";
 										echo "<input type='checkbox' name='czekbox".($i+1)."' />";
@@ -109,7 +127,7 @@ session_start();
 						
 						echo "<div id='down' align='right'>";
 							echo "<div id='buttons'>";
-								echo "<input type='submit' name='accept' value='Zaakceptuj' style='display: block; width: 100%	' />";
+								echo "<input type='submit' name='accept' value='Zaakceptuj' style='display: block; width: 100%' />";
 							echo "</div>";
 						echo "</div>"; //DIV DOWN
 						
@@ -126,16 +144,26 @@ session_start();
 					$nazwa = $prefix.(string)($i+1);
 					$checkboxtab[$i] = $_POST[$nazwa];
 				}
-				//I TERAZ MAMY TABLICĘ Z WARTOŚCIAMI POSZCZEGÓLNYCH CHECKBOXÓW, CO POMOŻE PODJĄĆ DECYZJE DLA POSZCZEGÓLNYCH POZYCJI
-				//POSZCZEGÓLNE WARTOŚCI TABLICY PRZYJMUJĄ ALBO WARTOŚĆ ON, GDY ZAZNACZYMY CHECKBOX, ALBO NULL, GDY NIE ZAZNACZYMY.
-				//PRZERÓBMY TO NA WARTOŚCI 0 LUB 1:
 				
 				for($i=0; $i<$ile; $i++)
 				{
 					if($checkboxtab[$i]=="on")$checkboxtab[$i]=1;
 					else $checkboxtab[$i]=0;
 				}
-				//TERAZ CHECKBOXTAB MA WARTOŚCI CHECKBOXÓW: 1 - ZAZNACZONO, 2 - NIE ZAZNACZONO
+				
+				
+				//PĘTLA ZMIANY WARTOŚCI MASTERID
+				for($i=0; $i<$ile; $i++)
+				{
+					if($checkboxtab[$i] == 1)
+					{
+						$nrworkera = $TABCARDS[$i][0];
+						mysqli_query($connection, "UPDATE cards SET `$mastername` = 1 WHERE cards.workerid = $nrworkera")
+						or die(mysqli_error($connection));
+						header("Refresh:0");
+					}
+				}
+				
 			?>
 		</div> <!--CONTENT-->
 	</div> <!--CONTAINER-->
