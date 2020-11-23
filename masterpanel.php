@@ -43,7 +43,10 @@ session_start();
 	<div id="container">
 
 		<div id="naglowek">
-			<h1>Karty wymagające podpisu kierownika działu: (tu zmienna z nazwą działu)</h1>
+			<?php
+			$mastername = $_SESSION['mastername'];
+			echo"<h1>Karty wymagające podpisu kierownika ($mastername)</h1>";
+			?>
 		</div>
 		
 		<div style="padding: 5px;"></div> <!--DIV ODSTĘPOWY-->

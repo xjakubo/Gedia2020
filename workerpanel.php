@@ -10,53 +10,57 @@ session_start();
 </head>
 <body bgcolor="teal">
 <br />
-
 	<center>
-		
-
-	<fieldset style="width: 967; border: solid black; background-color: white">
-
-		<form method="post" action="XXXXXXXX.php">
-
-		<br />
+	
+	<fieldset style="width: 800; border: solid black; background-color: white">
+	<br />
+	
 		<table style="border-collapse: collapse;">
 			<tr>
-				<td width=700><h1>Karta obiegowa</h1></td>
+				<td width=600><h1>Karta obiegowa</h1></td>
 				<td><img src="img\logo.jpg" width=150 height=125/></td>
 			</tr>
 		</table>
 		<br />
 
 		<?php
-		error_reporting(0);
-		echo "<fieldset style='width: 270' align='left'>";
-			echo "<b>";
-				
-				$dbcall = mysqli_query($connection, "SELECT name, surname, gediaid, retirementday from workers");
-				$rowarray = mysqli_fetch_array($dbcall);
-				$tablica[4];
-				for($i=0; $i<4; $i++)
-				{
-					$tablica[$i] = $rowarray[$i];
-				}
-				
-				echo "Nazwisko: $tablica[0]<br />";
-				echo "Imię: $tablica[1]<br />";
-				echo "Numer: $tablica[2]<br />";
-				echo "Data zwolnienia: $tablica[3]<br />";
-			echo "</b>";
-		echo "</fieldset>";
-		echo "<br />";
-		
+			error_reporting(0);
+			echo "<fieldset style='width: 270' align='left'>";
+				echo "<b>";
+					
+					$GEDIAID = $_SESSION['gediaid'];
+					$dbcall = mysqli_query($connection, "SELECT name, surname, gediaid, retirementday from workers WHERE gediaid = $GEDIAID");
+					$rowarray = mysqli_fetch_array($dbcall);
+					$tablica[4];
+					for($i=0; $i<4; $i++)
+					{
+						$tablica[$i] = $rowarray[$i];
+					}
+					
+					echo "Nazwisko: $tablica[0]<br />";
+					echo "Imię: $tablica[1]<br />";
+					echo "Numer: $tablica[2]<br />";
+					echo "Data zwolnienia: $tablica[3]<br />";
+				echo "</b>";
+			echo "</fieldset>";
+			echo "<br />";
 			
+			$dbcall2 = mysqli_query($connection,
+			"SELECT `Dział Produkcji`, `Dział Logistyki`, `Dział Jakości`, `BHP`, `Dział Księgowości`, `Dział Utrzymania Ruchu`,
+			`Biuro Zarządu`, `Dział Informatyki IT`, `Dział Kadr`, `Dział Zakupów` from cards WHERE workerid = $GEDIAID");
+			$rowarray = mysqli_fetch_array($dbcall2);
+			$podpisy[10];
+			for($i=0; $i<10; $i++)
+			{
+				$podpisy[$i] = $rowarray[$i];
+			}
 		?>
 		
 		<table cellspacing=0 cellpadding=3>
 			<tr style="text-align: center; border: 1px solid black; border-collapse: collapse">
 				<th>Dział</th>
-				<th>Data</th>
 				<th align="center">Podpis osoby rozliczającej<br />kartę obiegową</th>
-				<th>Uwagi</th>
+				
 			</tr>
 
 			<tr><!--DZIAŁ-PRODUKCJI-->
@@ -68,9 +72,18 @@ session_start();
 					<li>Inne</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-produkcja" /></td>
-				<td><textarea rows=7 cols=21 name="UWG-produkcja"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[0]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 
 			<tr><!--DZIAŁ-LOGISTYKI-->
@@ -82,9 +95,18 @@ session_start();
 					<li>Inne</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-logistyka" /></td>
-				<td><textarea rows=7 cols=21 name="UWG-logistyka"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[1]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 
 			<tr><!--DZIAŁ-JAKOŚCI-->
@@ -96,9 +118,18 @@ session_start();
 					<li>Inne</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-jakosc" /></td>
-				<td><textarea rows=7 cols=21 name="UWG-jakosc"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[2]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 
 			<tr><!--BHP-->
@@ -109,9 +140,18 @@ session_start();
 					<li>Inne</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-bhp" /></td>
-				<td><textarea rows=6 cols=21 name="UWG-bhp"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[3]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 
 			<tr><!--DZIAŁ-KSIĘGOWOŚCI-->
@@ -124,9 +164,18 @@ session_start();
 					<li>Inne</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-ksiegowosc" /></td>
-				<td><textarea rows=8 cols=21 name="UWG-ksiegowosc"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[4]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 
 			<tr><!--DZIAŁ-UTRZYMANIA-RUCHU-->
@@ -138,9 +187,18 @@ session_start();
 					<li>Inne</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-utrzymanie" /></td>
-				<td><textarea rows=7 cols=21 name="UWG-utrzymanie"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[5]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 
 			<tr><!--BIURO-ZARZĄDU-->
@@ -153,9 +211,18 @@ session_start();
 					<li>Inne</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-zarzad" /></td>
-				<td><textarea rows=8 cols=21 name="UWG-zarzad"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[6]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 
 			<tr><!--DZIAŁ-INFORMATYKI-IT-->
@@ -170,9 +237,18 @@ session_start();
 					<li>Inne</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-informatyka" /></td>
-				<td><textarea rows=10 cols=21 name="UWG-informatyka"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[7]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 
 			<tr><!--DZIAŁ-KADR-->
@@ -185,9 +261,18 @@ session_start();
 					<li>Okulary przemysłowe</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-kadry" /></td>
-				<td><textarea rows=8 cols=21 name="UWG-kadry"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[8]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 
 			<tr><!--DZIAŁ-ZAKUPÓW-->
@@ -198,12 +283,21 @@ session_start();
 					<li>Inne</li>
 					</ul>
 				</td>
-				<td><input type="text" name="DATA" /></td>
-				<td><input type="text" name="POD-zakupy" /></td>
-				<td><textarea rows=7 cols=21 name="UWG-zakupy"></textarea></td>
+				<td align="center">
+					<?php
+						if($podpisy[9]==1)
+						{
+							echo "PODPISANO";
+						}
+						else
+						{
+							echo "*wymaga podpisu*";
+						}
+					?>
+				</td>
 			</tr>
 		</table>
-		</form>
+
 
 		<table>
 			<tr>  <!-- Miejsce na fizyczny podpis nr 1 -->
