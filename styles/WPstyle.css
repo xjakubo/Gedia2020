@@ -1,0 +1,113 @@
+body
+{
+	background-color: teal;
+}
+
+#content
+{
+	width: 760px;
+	border: solid black 3px;
+	background-color: white;
+	padding: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: 20px;
+}
+
+#upper
+{
+	margin: auto;
+	border: 1px solid;
+}
+
+#upper_left
+{
+	float: left;
+	width: 597px;
+}
+
+#upper_right
+{
+	float: left;
+	width: 110px;
+	border-left: 1px solid;
+}
+
+#cleaner
+{
+	clear: both;
+}
+
+#dane
+{
+	border: 3px solid grey;
+	text-align: left;
+	padding: 5px;
+	width: 290px;
+	margin: auto;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+#maintable
+{
+	margin: auto;
+	width: 690px;
+}
+
+#bottomsigns
+{
+	width: 680px;
+	margin: auto;
+	margin-top: 10px;
+}
+
+#leftsigns
+{
+	float: left;
+}
+
+#rightsigns
+{
+	float: right;
+	text-align: right;
+}
+
+#footer
+{
+	margin: auto;
+	width: 135px;
+	margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+table
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+td
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th
+{
+	text-align: center;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
