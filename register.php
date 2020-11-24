@@ -37,13 +37,17 @@ error_reporting(0);
 
     function showmasterwindow()
     {
+      var workerpanel = document.getElementById('workerpanel');
       var masterpanel = document.getElementById('masterpanel');
+      workerpanel.style.display = 'none';
       masterpanel.style.display = "block";
     }
     function showworkerwindow()
     {
       var workerpanel = document.getElementById('workerpanel');
+      var masterpanel = document.getElementById('masterpanel');
       workerpanel.style.display = "block";
+      masterpanel.style.display = 'none';
     }
 
   </script>
