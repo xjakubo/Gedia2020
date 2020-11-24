@@ -5,49 +5,42 @@ session_start();
 <html>
 <head>
 	<meta charset='utf=8' />
-	<title>DIVY</title>
+	<title>Karta Obiegowa</title>
 	<link rel="stylesheet" href="styles\WPstyle.css">
 </head>
 <body>
-<br />
-	
-	<div id="content">
 	<br />
-	
+	<div id="content">
+		<br />
 		<div id="upper">
-		
 			<div id="upper_left">
 				<td ><h1>Karta obiegowa</h1>
 			</div>
 			
 			<div id="upper_right">
-				
 				<img src="img\logo.jpg" width=150 height=125 />
-				
 			</div>
 			
 			<div id="cleaner"></div>
-			
 		</div>
 		
 
 		<?php
 			error_reporting(0);
-			echo '<div id="dane">';
-					
-					$GEDIAID = $_SESSION['gediaid'];
-					$dbcall = mysqli_query($connection, "SELECT name, surname, gediaid, retirementday from workers WHERE gediaid = $GEDIAID");
-					$rowarray = mysqli_fetch_array($dbcall);
-					$tablica[4];
-					for($i=0; $i<4; $i++)
-					{
-						$tablica[$i] = $rowarray[$i];
-					}
-					
-					echo "Nazwisko: $tablica[0]<br />";
-					echo "Imię: $tablica[1]<br />";
-					echo "Numer: $tablica[2]<br />";
-					echo "Data zwolnienia: $tablica[3]<br />";
+			echo '<div id="dane">';			
+				$GEDIAID = $_SESSION['gediaid'];
+				$dbcall = mysqli_query($connection, "SELECT name, surname, gediaid, retirementday from workers WHERE gediaid = $GEDIAID");
+				$rowarray = mysqli_fetch_array($dbcall);
+				$tablica[4];
+				for($i=0; $i<4; $i++)
+				{
+					$tablica[$i] = $rowarray[$i];
+				}
+				
+				echo "Nazwisko: $tablica[0]<br />";
+				echo "Imię: $tablica[1]<br />";
+				echo "Numer: $tablica[2]<br />";
+				echo "Data zwolnienia: $tablica[3]<br />";
 			echo "</div>";
 			
 			echo "<br />";
@@ -64,9 +57,8 @@ session_start();
 		?>
 		
 		<div id="maintable">
-		<center>
+			<center>
 			<table cellspacing=0 cellpadding=3 width="680">
-			
 				<tr>
 					<th>Dział</th>
 					<th>Podpis osoby rozliczającej<br />kartę obiegową</th>
@@ -306,7 +298,7 @@ session_start();
 					</td>
 				</tr>
 			</table>
-		</center>
+			</center>
 		</div> <!--MAINTABLE-->
 
 		<div id="bottomsigns">
@@ -334,6 +326,5 @@ session_start();
 			Strona 1 z 1
 		</div>
 	</div> <!--CONTENT-->
-
 </body>
 </html>
