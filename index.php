@@ -40,7 +40,10 @@ session_start();
       <br>
       Haslo: <input type = 'password' name = 'passwrd'></input>
       <br>
-      <center><button type='submit'>Zaloguj</button></center>
+      <center>
+      <button type='submit'>Zaloguj</button>
+      <button><a href='/register.php'>Zarejestruj się</button>
+      </center>
     </fieldset>
     </form>
     </div>

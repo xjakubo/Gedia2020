@@ -1,5 +1,5 @@
 <?php include('db/config.php');
-
+error_reporting(0);
 
   if($_GET['newuser'] == 'register' and $_POST['acctype'] == 'worker'){
     $username = $_POST['username'];
@@ -34,14 +34,16 @@
   <title>Rejestracja</title>
   <link rel="stylesheet" href = 'styles/registerstyle.css'>
   <script type = 'text/javascript'>
+
     function showmasterwindow()
     {
-    var x = document.getElementsByName('masterid');
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
+      var masterpanel = document.getElementById('masterpanel');
+      masterpanel.style.display = "block";
     }
+    function showworkerwindow()
+    {
+      var workerpanel = document.getElementById('workerpanel');
+      workerpanel.style.display = "block";
     }
 
   </script>
@@ -52,8 +54,8 @@
 <form method = "post" action= 'register.php?newuser=register'>
 Zarejestruj jako:
 <br>
-Kierownik: <input type="radio" name='acctype' value = "master"></input>
-Pracownik: <input type="radio" onclick='showmasterwindow()'name='acctype' value = "worker"></input>
+Kierownik: <input type="radio" onclick='showmasterwindow()' name='acctype' value = "master"></input>
+Pracownik: <input type="radio" onclick='showworkerwindow()'name='acctype' value = "worker"></input>
 <br>
 Login: <input type = 'text' name='username'></input>
 <br>
@@ -63,10 +65,12 @@ Imie: <input type = 'text' name = 'name'></input>
 <br>
 Nazwisko: <input type = 'text' name = 'surname'></input>
 <br>
+<div id = 'workerpanel'>
 Numer pracownika: <input type = 'text' name = 'gediaid'></input>
+</div>
 <br>
 
-
+<div id = 'masterpanel'>
 Rodzaj uprawnienia:
 <select name="masterid">
 	<option selected value="0"></option> <!--Domyślna opcja zerowa, jeśli zaznaczyłeś przy rejestracji kierownik i wybierzesz tę opcję - error-->
@@ -82,6 +86,8 @@ Rodzaj uprawnienia:
 	<option value="10">Dział Zakupów</option>
 	<option value="11">Administrator</option>
 </select>
+
+</div>
 
 </fieldset>
 

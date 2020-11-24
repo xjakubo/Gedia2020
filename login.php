@@ -72,7 +72,9 @@ if (!empty($_POST['login']) && !empty($_POST['passwrd']) && !empty($_POST['accty
     header("Location: index.php");
   }
 }
-
+else{
+  header("Location: index.php?nologin");
+}
 /*
 $login = 'login';
 $haslo = 'test123';

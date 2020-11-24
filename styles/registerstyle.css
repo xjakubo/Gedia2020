@@ -7,3 +7,10 @@ div.registerform{
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+#masterpanel{
+  display: none;
+}
+#workerpanel{
+  display: none;
+}
