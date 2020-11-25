@@ -51,53 +51,77 @@ error_reporting(0);
     }
 
   </script>
+  
+  <style>
+	#fuccgobacc
+	{
+		border: solid 3px;
+		border-top: 0px;
+		width: 140px;
+		margin: auto;
+		background-color: white;
+		padding: 5px;
+	}
+  </style>
+  
 </head>
-<body>
+<body bgcolor="teal">
   <div class = 'registerform'>
-<fieldset>
-<form method = "post" action= 'register.php?newuser=register'>
-Zarejestruj jako:
-<br>
-Kierownik: <input type="radio" onclick='showmasterwindow()' name='acctype' value = "master"></input>
-Pracownik: <input type="radio" onclick='showworkerwindow()'name='acctype' value = "worker"></input>
-<br>
-Login: <input type = 'text' name='username'></input>
-<br>
-Password: <input type = 'password' name='password'></input>
-<br>
-Imie: <input type = 'text' name = 'name'></input>
-<br>
-Nazwisko: <input type = 'text' name = 'surname'></input>
-<br>
-<div id = 'workerpanel'>
-Numer pracownika: <input type = 'text' name = 'gediaid'></input>
-</div>
-<br>
-
-<div id = 'masterpanel'>
-Rodzaj uprawnienia:
-<select name="masterid">
-	<option selected value="0"></option> <!--Domyślna opcja zerowa, jeśli zaznaczyłeś przy rejestracji kierownik i wybierzesz tę opcję - error-->
-	<option value="1">Dział Produkcji</option>
-	<option value="2">Dział Logistyki</option>
-	<option value="3">Dział Jakości</option>
-	<option value="4">BHP</option>
-	<option value="5">Dział Księgowości</option>
-	<option value="6">Dział Utrzymania Ruchu</option>
-	<option value="7">Biuro Zarządu</option>
-	<option value="8">Dział Informatyki IT</option>
-	<option value="9">Dział Kadr</option>
-	<option value="10">Dział Zakupów</option>
-	<option value="11">Administrator</option>
-</select>
-
-</div>
-
-</fieldset>
-
-<center><button type = "submit"> Zarejestruj się </button></center>
-
-</div>
+	<div style="border: 3px solid; background-color: white">
+		<form method = "post" action= 'register.php?newuser=register'>
+		<br />
+		<center><div style="font-weight: bold; font-size: 20px">Zarejestruj jako:</div></center>
+		<br />
+		
+		Kierownik: <input type="radio" onclick='showmasterwindow()' name='acctype' value = "master"></input>
+		Pracownik: <input type="radio" onclick='showworkerwindow()'name='acctype' value = "worker"></input>
+		<br>
+		
+		<table>
+			<tr>
+				<td style="text-align: right">Login:</td>
+				<td><input type = 'text' name='username'></input></td>
+			</tr>
+			<tr>
+				<td style="text-align: right">Hasło:</td>
+				<td><input type = 'password' name='password'></input></td>
+			</tr>
+			<tr>
+				<td style="text-align: right">Imię:</td>
+				<td><input type = 'text' name = 'name'></input></td>
+			</tr>
+			<tr>
+				<td style="text-align: right">Nazwisko:</td>
+				<td><input type = 'text' name = 'surname'></input></td>
+			</tr>
+		</table>
+	
+		<br>
+		<div id = 'workerpanel' style="text-align: center">
+			Numer pracownika:<br /><input type = 'text' name = 'gediaid'></input>
+		</div>
+		
+		<div id = 'masterpanel' style="text-align: center">
+			Rodzaj uprawnienia:<br />
+			<select name="masterid">
+				<option selected value="0"></option> <!--Domyślna opcja zerowa, jeśli zaznaczyłeś przy rejestracji kierownik i wybierzesz tę opcję - error-->
+				<option value="1">Dział Produkcji</option>
+				<option value="2">Dział Logistyki</option>
+				<option value="3">Dział Jakości</option>
+				<option value="4">BHP</option>
+				<option value="5">Dział Księgowości</option>
+				<option value="6">Dział Utrzymania Ruchu</option>
+				<option value="7">Biuro Zarządu</option>
+				<option value="8">Dział Informatyki IT</option>
+				<option value="9">Dział Kadr</option>
+				<option value="10">Dział Zakupów</option>
+				<option value="11">Administrator</option>
+			</select>
+		</div>
+		<center><button type = "submit"> Zarejestruj się </button></center>
+	</div>
+	<div id="fuccgobacc"><a href="index.php">Powrót do logowania</a></div>
+  </div>
 </form>
 </body>
 

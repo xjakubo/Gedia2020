@@ -9,8 +9,23 @@ div.registerform{
 }
 
 #masterpanel{
-  display: none;
+  /*display: none;*/
 }
 #workerpanel{
-  display: none;
+  /*display: none;*/
+}
+
+#regleft
+{
+	float: left;
+}
+
+#regright
+{
+	float: left;
+}
+
+#cleaner
+{
+	clear: both;
 }
