@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 23 Lis 2020, 12:01
+-- Czas generowania: 26 Lis 2020, 10:22
 -- Wersja serwera: 10.4.14-MariaDB
 -- Wersja PHP: 7.2.33
 
@@ -49,10 +49,9 @@ CREATE TABLE `cards` (
 --
 
 INSERT INTO `cards` (`id`, `workerid`, `Dział Produkcji`, `Dział Logistyki`, `Dział Jakości`, `BHP`, `Dział Księgowości`, `Dział Utrzymania Ruchu`, `Biuro Zarządu`, `Dział Informatyki IT`, `Dział Kadr`, `Dział Zakupów`, `Notes`, `isDone`) VALUES
-(1, 23, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, '', 0),
-(2, 24, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, '', 0),
-(3, 2137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0),
-(4, 6969, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0);
+(10, 123, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0),
+(11, 124, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0),
+(12, 4545, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -74,9 +73,9 @@ CREATE TABLE `masters` (
 --
 
 INSERT INTO `masters` (`id`, `username`, `password`, `name`, `surname`, `masterid`) VALUES
-(1, 'pierwszy', 'tesd123', 'dasdas', 'asdasd', 2),
-(2, 'asd', 'asd', 'zxcczx', 'zxc', 5),
-(3, 'szymus', 'test123', 'szemon', 'czajsfdsd', 3);
+(4, 'kierownik1', 'haslo', 'Anna', 'Mucha', 6),
+(5, 'kierownik2', 'haslo', 'Beata', 'Kozidrak', 8),
+(6, 'kierownik3', 'haslo', 'Jacek', 'Morgala', 10);
 
 -- --------------------------------------------------------
 
@@ -100,17 +99,9 @@ CREATE TABLE `workers` (
 --
 
 INSERT INTO `workers` (`id`, `username`, `password`, `name`, `surname`, `gediaid`, `retirementday`, `isdone`) VALUES
-(1, 'jacek', 'packa', 'jan', 'kowalski', 0, '2017-12-13', 0),
-(2, 'ania', 'bania', 'Anna', 'Mucha', 0, '0000-00-00', 0),
-(9, 'bnvcxbcx', 'xvcb', 'xcvbdrsf', 'sdfsdf', 0, '0000-00-00', 0),
-(10, 'asda', 'sdasda', 'sdas', 'dasdasdasdasda', 0, '0000-00-00', 0),
-(11, 'asdzxc', 'czxc', 'zxczxc', 'zxczxc', 0, '0000-00-00', 0),
-(12, 'asdzxc', 'czxc', 'zxczxc', 'zxczxc', 0, '0000-00-00', 0),
-(13, 'jakub', 'test123', 'jakub', 'ostrowski', 0, '0000-00-00', 0),
-(14, 'jeremiasz', 'mazurkiewicz', 'jeremiasz', 'mazurkiewicz', 0, '0000-00-00', 0),
-(15, 'jestem', 'jerem', 'kytas', 'jebany', 23, '2020-11-23', 0),
-(17, 'wladimirxpompa', 'jebacdisa123', 'Jerremiasz', 'skurwysynmazurkiewicz', 2137, '2020-11-23', 0),
-(18, 'jetemok', 'kochamciekamil123', 'Kamil', 'Miczynski', 6969, '2020-11-23', 0);
+(24, 'pracownik1', 'haslo1', 'Jan', 'Kowalski', 123, '2020-11-26', 0),
+(25, 'pracownik2', 'haslo', 'Jan', 'Nowak', 124, '2020-11-26', 0),
+(26, 'pracownik3', 'haslo', 'Jacek', 'Kowalski', 4545, '2020-11-26', 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -142,19 +133,19 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT dla tabeli `cards`
 --
 ALTER TABLE `cards`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT dla tabeli `masters`
 --
 ALTER TABLE `masters`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT dla tabeli `workers`
 --
 ALTER TABLE `workers`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
