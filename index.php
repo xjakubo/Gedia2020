@@ -14,26 +14,36 @@ session_start();
 		padding: 15px;
 		margin-top: -120px;
 	}
+	
+	#credentials
+	{
+		border: 3px solid;
+		width: 500px;
+		background-color: white;
+		font-size: 20px;
+		padding: 3px;
+		text-align: center;
+	}
   </style>
 </head>
 <body bgcolor="teal">
   <?php if (!empty($_SESSION['user'])) : ?>
     <?php if($_SESSION['account'] == "worker") : ?>
       <div class = 'topbar'>
-      <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> </p>
+      <div id='credentials' style="width: 350px">Witaj, <?=$_SESSION['user']?> </div>
       <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
       <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
       </div>
     <?php endif; ?>
     <?php if($_SESSION['account'] == "master") : ?>
       <div class = 'topbar'>
-      <p class = 'credentials'>Witaj, <?=$_SESSION['user']?> Stanowisko: <?=$_SESSION['mastername']?></p>
+      <div id='credentials'>Witaj, <?=$_SESSION['user']?> Stanowisko: <?=$_SESSION['mastername']?></div>
       <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
       <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
     </div>
 
   <?php endif; ?>
-    <br />
+    
     <hr>
     <iframe name = 'UsableSpace' width="100%" height="90%" style="border:1px solid black;">
     </iframe>

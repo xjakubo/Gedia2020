@@ -11,11 +11,6 @@ div.topbar{
   position: relative;
 }
 
-p.credentials{
-  position: relative;
-  top: 0px;
-}
-
 button.panelbtn{
   position: absolute;
   top: 0px;
