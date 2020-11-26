@@ -7,6 +7,12 @@ error_reporting(0);
     $firstname = $_POST['name'];
     $surname = $_POST['surname'];
     $gediaid = $_POST['gediaid'];
+    $dbcall = mysqli_query($connection, "SELECT * FROM workers WHERE gediaid = '$gediaid'");
+    $result = mysqli_num_rows($dbcall);
+    if($result != 0){
+      echo 'Takie konto juz istnieje!';
+      die();
+    }
     $date = date('Y-m-d');
     mysqli_query($connection, "INSERT INTO workers (username, password, name, surname, gediaid, retirementday)
     VALUES('$username','$password','$firstname','$surname','$gediaid','$date')")
@@ -23,7 +29,12 @@ error_reporting(0);
     $firstname = $_POST['name'];
     $surname = $_POST['surname'];
     $masterid = $_POST['masterid'];
-
+    $dbcall = mysqli_query($connection, "SELECT * FROM workers WHERE username = '$username'");
+    $result = mysqli_num_rows($dbcall);
+    if($result != 0){
+      echo 'Takie konto juz istnieje!';
+      die();
+    }
     mysqli_query($connection, "INSERT INTO masters (username, password, name, surname, masterid)
     VALUES('$username','$password','$firstname','$surname','$masterid')");
 
@@ -51,7 +62,7 @@ error_reporting(0);
     }
 
   </script>
-  
+
   <style>
 	#fuccgobacc
 	{
@@ -63,7 +74,7 @@ error_reporting(0);
 		padding: 5px;
 	}
   </style>
-  
+
 </head>
 <body bgcolor="teal">
   <div class = 'registerform'>
@@ -72,11 +83,11 @@ error_reporting(0);
 		<br />
 		<center><div style="font-weight: bold; font-size: 20px">Zarejestruj jako:</div></center>
 		<br />
-		
+
 		Kierownik: <input type="radio" onclick='showmasterwindow()' name='acctype' value = "master"></input>
 		Pracownik: <input type="radio" onclick='showworkerwindow()'name='acctype' value = "worker"></input>
 		<br>
-		
+
 		<table>
 			<tr>
 				<td style="text-align: right">Login:</td>
@@ -95,12 +106,12 @@ error_reporting(0);
 				<td><input type = 'text' name = 'surname'></input></td>
 			</tr>
 		</table>
-	
+
 		<br>
 		<div id = 'workerpanel' style="text-align: center">
 			Numer pracownika:<br /><input type = 'text' name = 'gediaid'></input>
 		</div>
-		
+
 		<div id = 'masterpanel' style="text-align: center">
 			Rodzaj uprawnienia:<br />
 			<select name="masterid">

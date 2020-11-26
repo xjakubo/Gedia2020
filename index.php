@@ -14,7 +14,7 @@ session_start();
 		padding: 15px;
 		margin-top: -120px;
 	}
-	
+
 	#credentials
 	{
 		border: 3px solid;
@@ -30,7 +30,7 @@ session_start();
   <?php if (!empty($_SESSION['user'])) : ?>
     <?php if($_SESSION['account'] == "worker") : ?>
       <div class = 'topbar'>
-      <div id='credentials' style="width: 350px">Witaj, <?=$_SESSION['user']?> </div>
+      <div id='credentials' style="width: 350px">Witaj, <?=$_SESSION['firstname']?> </div>
       <button class = 'panelbtn'><a href = 'panel.php' target = 'UsableSpace'> Przejdz do Panelu</button>
       <button class = 'logoutbtn'><a href = 'logout.php'>Wyloguj sie</a></button>
       </div>
@@ -43,7 +43,7 @@ session_start();
     </div>
 
   <?php endif; ?>
-    
+
     <hr>
     <iframe name = 'UsableSpace' width="100%" height="90%" style="border:1px solid black;">
     </iframe>
