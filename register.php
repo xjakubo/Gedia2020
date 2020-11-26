@@ -67,7 +67,7 @@ error_reporting(0);
 </head>
 <body bgcolor="teal">
   <div class = 'registerform'>
-	<div style="border: 3px solid; background-color: white">
+	<div style="border: 3px solid; background-color: white; margin-top: -120px; padding: 10px;">
 		<form method = "post" action= 'register.php?newuser=register'>
 		<br />
 		<center><div style="font-weight: bold; font-size: 20px">Zarejestruj jako:</div></center>
@@ -118,6 +118,7 @@ error_reporting(0);
 				<option value="11">Administrator</option>
 			</select>
 		</div>
+		<br />
 		<center><button type = "submit"> Zarejestruj się </button></center>
 	</div>
 	<div id="fuccgobacc"><a href="index.php">Powrót do logowania</a></div>
